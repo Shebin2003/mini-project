@@ -19,6 +19,7 @@ const adminLogin = async(req,res)=>{
             const [result2] = await db.promise().query(query2,[admin_id])
             const hashedPassword = result2[0].admin_password
             bcrypt.compare(data.password,hashedPassword,(err,result)=>{
+                console.log(data.password,"hi")
                 if (err) {
                     console.error('Error comparing passwords:', err);
                     return res.status(500).send('Internal server error');
